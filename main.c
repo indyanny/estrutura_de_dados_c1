@@ -67,22 +67,22 @@ void printSimpleList(struct no *list){
 }
 
 void printList(struct descList *descList) {
-    struct descritor *temp = descList->d;
+    struct descritor *t = descList->d;
     printf("Elementos da lista com descritor: ");
-    while (temp != NULL) {
-        printf("%d ", temp->dado);
-        temp = temp->prox;
+    while (t != NULL) {
+        printf("%d ", t->dado);
+        t = t->prox;
     }
     printf("\n");
 }
 
 // Libera memoria
 void freeList(struct descList *descList) {
-    struct descritor *temp;
+    struct descritor *t;
     while (descList->d != NULL) {
-        temp = descList->d;
+        t = descList->d;
         descList->d = descList->d->prox;
-        free(temp);
+        free(t);
     }
     descList->count = 0;
 }
@@ -90,7 +90,7 @@ void freeList(struct descList *descList) {
 int main(int arg, char *argv[]) {
     int n, i;
     struct no *list = NULL;
-    struct no *temp;
+    struct no *t;
     struct descList descList;
     descList.d = NULL;
     descList.count = 0;
@@ -101,22 +101,22 @@ int main(int arg, char *argv[]) {
     scanf("%d", &n);
 
     for (i = 0; i < n; i++) {
-        temp = malloc(sizeof(struct no));
-        if (temp == NULL) {
+        t = malloc(sizeof(struct no));
+        if (t == NULL) {
             printf("Erro: Memória não alocada!\n");
             return 1;
         }
 
-        temp->dado = rand() % 100;
-        temp->prox = list;
-        list = temp;
+        t->dado = rand() % 100;
+        t->prox = list;
+        list = t;
     }
 
     // Exporta
-    temp = list;
-    while (temp != NULL) {
-        insertInList(&descList, temp->dado);
-        temp = temp->prox;
+    t = list;
+    while (t != NULL) {
+        insertInList(&descList, t->dado);
+        t = t->prox;
     }
 
     printSimpleList(list);
@@ -124,10 +124,10 @@ int main(int arg, char *argv[]) {
 
     // Calcula
     double sum = 0.0;
-    temp = list;
-    while (temp != NULL) {
-        sum += temp->dado;
-        temp = temp->prox;
+    t = list;
+    while (t != NULL) {
+        sum += t->dado;
+        t = t->prox;
     }
     double media = sum / descList.count;
 
@@ -153,9 +153,9 @@ int main(int arg, char *argv[]) {
 
     //Libera memoria
     while (list != NULL) {
-        temp = list;
+        t = list;
         list = list->prox;
-        free(temp);
+        free(t);
     }
 
     return 0;
