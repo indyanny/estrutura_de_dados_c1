@@ -87,7 +87,7 @@ void freeList(struct descList *descList) {
     descList->count = 0;
 }
 
-int main() {
+int main(int arg, char *argv[]) {
     int n, i;
     struct no *list = NULL;
     struct no *temp;
