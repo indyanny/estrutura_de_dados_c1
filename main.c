@@ -12,7 +12,6 @@ struct descritor {
     struct descritor *prox;
 };
 
-// Lista com descritor
 struct descList {
     int count;
     struct descritor *d;
@@ -56,7 +55,7 @@ void insertInList(struct descList *descList, int dado) {
     descList->count++;
 }
 
-// Imprime listas
+// Funcao imprimir
 void printSimpleList(struct no *list){
     printf("\nElementos da lista encadeada: ");
     while(list != NULL){
